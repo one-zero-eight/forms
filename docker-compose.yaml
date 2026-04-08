@@ -14,7 +14,7 @@ services:
       - "8017:8000"
     volumes:
       - "./settings.yaml:/app/settings.yaml:ro" # Read-only settings file
-  
+
   db:
     # See more: https://hub.docker.com/_/mongo
     image: "mongo:8.0"
@@ -31,6 +31,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongoadmin}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-secret}
-  
+
 volumes:
   mongodb:

@@ -3,7 +3,7 @@ from fastapi_derive_responses import AutoDeriveResponsesAPIRoute
 
 from src.api import docs
 from src.api.dependencies import USER_AUTH
-from src.modules.inh_accounts_sdk import inh_accounts, UserSchema
+from src.modules.inh_accounts_sdk import UserSchema, inh_accounts
 
 router = APIRouter(
     prefix="/user",

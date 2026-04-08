@@ -6,7 +6,7 @@ from fastapi import Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from src.api.exceptions import IncorrectCredentialsException
-from src.modules.inh_accounts_sdk import inh_accounts, UserTokenData
+from src.modules.inh_accounts_sdk import UserTokenData, inh_accounts
 
 bearer_scheme = HTTPBearer(
     scheme_name="Bearer",
