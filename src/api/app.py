@@ -76,7 +76,9 @@ app.add_middleware(
 )
 
 from src.modules.user.routes import router as router_user  # noqa: E402, I001
+from src.modules.links.routes import router as router_links  # noqa: E402, I001
 
 # Import routers above and include them below [do not edit this comment]
+app.include_router(router_links)
 app.include_router(router_user)
 # ^

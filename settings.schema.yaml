@@ -25,6 +25,20 @@ $defs:
     - production
     title: Environment
     type: string
+  Links:
+    additionalProperties: false
+    description: Links and signature settings
+    properties:
+      signature_secret:
+        description: Secret used to sign and verify form payload
+        format: password
+        title: Signature Secret
+        type: string
+        writeOnly: true
+    required:
+    - signature_secret
+    title: Links
+    type: object
 additionalProperties: false
 description: Settings for the application.
 properties:
@@ -60,8 +74,11 @@ properties:
     type: string
   accounts:
     $ref: '#/$defs/Accounts'
+  links:
+    $ref: '#/$defs/Links'
 required:
 - database_uri
 - accounts
+- links
 title: Settings
 type: object

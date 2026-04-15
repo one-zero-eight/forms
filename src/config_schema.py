@@ -23,6 +23,13 @@ class Accounts(SettingBaseModel):
     "JWT token for accessing the Accounts API as a service"
 
 
+class Links(SettingBaseModel):
+    """Links and signature settings"""
+
+    signature_secret: SecretStr
+    "Secret used to sign and verify form payload"
+
+
 class Settings(SettingBaseModel):
     """Settings for the application."""
 
@@ -42,6 +49,8 @@ class Settings(SettingBaseModel):
     "Allowed origins for CORS: from which domains requests to the API are allowed. Specify as a regex: `https://.*.innohassle.ru`"
     accounts: Accounts
     "InNoHassle Accounts integration settings"
+    links: Links
+    "Links and signature settings"
 
     @classmethod
     def from_yaml(cls, path: Path) -> "Settings":

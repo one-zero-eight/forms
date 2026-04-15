@@ -5,3 +5,5 @@ database_uri: mongodb://mongoadmin:secret@127.0.0.1:27017/db?authSource=admin # 
 accounts:
   # get from https://api.innohassle.ru/accounts/v0/tokens/generate-service-token?sub=forms-local-dev&scopes=users&only_for_me=true
   api_jwt_token: null
+links:
+  signature_secret: null

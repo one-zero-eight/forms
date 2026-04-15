@@ -119,14 +119,18 @@ class InNoHassleAccounts:
             if telegram_id:
                 urls.append(f"/users/by-telegram-id/{telegram_id}")
             for url in urls:
-                response = await client.get(url)
-                try:
-                    response.raise_for_status()
-                    return UserSchema.model_validate(response.json())
-                except httpx.HTTPStatusError as e:
-                    if e.response.status_code == 404:
+                for i in range(3):
+                    try:
+                        response = await client.get(url)
+                        response.raise_for_status()
+                        return UserSchema.model_validate(response.json())
+                    except httpx.ConnectTimeout:
+                        time.sleep(1 * (2**i))
                         continue
-                    raise e
+                    except httpx.HTTPStatusError as e:
+                        if e.response.status_code == 404:
+                            continue
+                        raise e
             return None
 
 
