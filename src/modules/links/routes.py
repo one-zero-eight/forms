@@ -126,8 +126,6 @@ async def resolve_link(slug: str, auth: USER_AUTH) -> ViewResolvedLink:
     link = await link_repository.read_by_slug(slug)
     if link is None:
         raise HTTPException(status_code=404, detail="Link not found")
-    if link.owner_innohassle_id != auth.innohassle_id:
-        raise HTTPException(status_code=403, detail="Link belongs to another user")
 
     user = await inh_accounts.get_user(innohassle_id=auth.innohassle_id)
     if user is None:
