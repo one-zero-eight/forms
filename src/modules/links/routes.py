@@ -135,11 +135,11 @@ async def resolve_link(slug: str, auth: USER_AUTH) -> ViewResolvedLink:
     fio = ""
     telegram = ""
 
-    if user.innopolis_sso is not None:
-        email = user.innopolis_sso.email or email
-        fio = user.innopolis_sso.name or ""
-    if user.telegram is not None and user.telegram.username:
-        telegram = f"@{user.telegram.username}"
+    if user.innopolis_info is not None:
+        email = user.innopolis_info.email or email
+        fio = user.innopolis_info.name or ""
+    if user.telegram_info is not None and user.telegram_info.username:
+        telegram = f"@{user.telegram_info.username}"
 
     payload = SignaturePayload(email=email, fio=fio, telegram=telegram)
     signature = sign_payload(payload)
